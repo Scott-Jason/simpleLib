@@ -1,6 +1,45 @@
+:root{
+    --sidepanel: #451a03;
+    --main: #78350f;
+    --header: #fffbeb;
+
+
+}
+
+
 body {
     background-color: green;
     font-size: large;
     color: red;
+    margin: 0;
 
+}
+
+.site{
+    display: grid;
+    grid-template-rows: 110px 100vh;
+
+}
+
+.header{
+    background-color: var(--header);
+}
+
+.body {
+    
+    display:grid;
+    grid-template-columns: 1fr minmax(800px, 1fr) 1fr;
+}
+.sidepanel{
+    background-color: var(--sidepanel);
+}
+
+.main{
+    background-color: var(--main);
+    display: grid;
+    grid-template: 1fr 1fr 1fr / 1fr 1fr
+}
+
+.outline {
+    outline: 1px solid red;
 }

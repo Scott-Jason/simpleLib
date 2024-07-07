@@ -9,6 +9,10 @@ function Book(title, author, pageNum, read){
     this.read = read;
 }
 
+myLibrary.push(new Book("TheHobbit", "JRR", "513", "true"));
+myLibrary.push(new Book("Leaves", "Nature", "5133", "true"));
+
+
 function addBook(){
     let userInput =  prompt("Please add a book in format 'title, author, #ofpages, read(true/false)'");
     userInput = userInput.split(' ');
@@ -16,5 +20,13 @@ function addBook(){
     myLibrary.push(aBook);
 }
 
-addBook();
+//addBook();
 console.log(myLibrary);
+
+function displayBooks(){
+    for(let i = 0; i < myLibrary.length; i++){
+        console.log('yo');
+    }
+}
+
+displayBooks();
