@@ -8,9 +8,24 @@
     <script src="javascript.js" defer></script>
 </head>
 <body>
+    <dialog>
+        <form action="database" method="post">
+            <label for="title">Title</label>
+            <input autofocus type="text" id="title" name="usr_title">
+            <label for="author">Author</label>
+            <input type="text" id="author" name="usr_author">
+            <label for="pages"># of Pages</label>
+            <input type="text" id="pages" name="usr_pages">
+            <label for="read">Have you finished it?</label>
+            <input type="checkbox" id="read" name="usr+read">
+        </form>
+        <button>Close and Add</button>
+    </dialog>
+    
     <div class="site">
         <div class="header outline">
-            bomk
+            <div class="heading outline">Simple Library            </div>
+            <button class="newBook outline"> Add Book</button>
 
         </div>
         <div class="body outline outline"> 

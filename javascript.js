@@ -12,6 +12,19 @@ function Book(title, author, pageNum, read){
 myLibrary.push(new Book("TheHobbit", "JRR", "513", "true"));
 myLibrary.push(new Book("Leaves", "Nature", "5133", "true"));
 
+const dialog = document.querySelector("dialog");
+const showButton = document.querySelector(".newBook");
+const closeButton = document.querySelector("dialog button");
+
+// "Show the dialog" button opens the dialog modally
+showButton.addEventListener("click", () => {
+  dialog.showModal();
+});
+
+// "Close" button closes the dialog
+closeButton.addEventListener("click", () => {
+  dialog.close();
+});
 
 function addBook(){
     let userInput =  prompt("Please add a book in format 'title, author, #ofpages, read(true/false)'");
@@ -23,9 +36,9 @@ function addBook(){
 //addBook();
 console.log(myLibrary);
 
-function displayBooks(){
+function displayBooks(i){
     const main = document.querySelector(".main");
-    for(let i = 0; i < myLibrary.length; i++){
+   
         
         const card = document.createElement('div');
 
@@ -53,13 +66,11 @@ function displayBooks(){
         read.style.fontWeight = '100';
         card.appendChild(read);
 
-
-
-
-
         main.appendChild(card);
-    }
-
 }
 
-displayBooks();
+
+for(let i = 0; i < myLibrary.length; i++){
+    displayBooks(i);
+}
+

@@ -7,6 +7,15 @@
 
 }
 
+::backdrop {
+    background-image: linear-gradient(
+      45deg,
+      brown,
+      var(--main),
+      var(--sidepanel)
+    );
+    opacity: 0.5;
+  }
 
 body {
     background-color: green;
@@ -16,6 +25,11 @@ body {
 
 }
 
+form{
+    display:grid;
+    grid-template: 1fr 1fr 1fr / 1fr 1fr;
+}
+
 .site{
     display: grid;
     grid-template-rows: 110px 100vh;
@@ -23,7 +37,19 @@ body {
 }
 
 .header{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: 3fr 1fr;
     background-color: var(--header);
+    color: var(--text);
+    font-size: 3rem;
+}
+
+.newBook{
+    font-size: 2rem;
+    color:#020617;
+    border-radius: 4%;
 }
 
 .body {
@@ -51,8 +77,8 @@ body {
 
 .card{
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    align-items: center;
+    grid-template-rows: 1fr 1fr 1fr 1fr 2fr;
+    align-items: start;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 2rem;
     text-align: center;
