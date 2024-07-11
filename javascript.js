@@ -15,11 +15,31 @@ function Book(title, author, pageNum, read, index){
 //   };
 
 Book.prototype.deleteSelf = function() {
- //mnake this
+    const main = document.querySelector(".main");
+    const carDel = document.getElementById(`${this.index}`);
+    main.removeChild(carDel);
 };
 
+
 Book.prototype.swapRead = function() {
-    //make this
+    const findMe = document.getElementById(`${this.index}`);
+   
+    if(findMe.querySelector(".true") == null){
+        const read = findMe.querySelector(".false");
+        read.classList.remove("false");
+        //its false
+        read.textContent = "complete: " + "true";
+        read.style.color = "green";
+        read.classList.add("true");
+    }else{
+        const read = findMe.querySelector(".true");
+        read.classList.remove("true");
+        //its true
+        read.textContent = "complete: " + "false";
+        read.style.color = "red";
+        read.classList.add("false");
+
+    }
 };
 
 myLibrary.push(new Book("The Hobbit", "JRR", "1084", "true", 0));
@@ -44,12 +64,12 @@ const form = document.querySelector("dialog form");
 
 form.addEventListener("submit",  function(e){
     e.preventDefault();
-    console.log('yo momma');
+    
     const formData = new FormData(form);
     let trueFalse = "true";
     if(formData.get('usr_read') !== 'on'){
         trueFalse = "false";
-        console.log("PLEASE");
+     
     }
     myLibrary.push(new Book(formData.get('usr_title'), formData.get('usr_author'), formData.get('usr_pages'), trueFalse, counter));
     displayBooks(myLibrary.length-1);
@@ -65,14 +85,14 @@ function addBook(){ //pretty much depreceated
 }
 
 //addBook();
-console.log(myLibrary);
+//console.log(myLibrary);
 
 function displayBooks(i){
     const main = document.querySelector(".main");
    
         
         const card = document.createElement('div');
-
+        card.id = myLibrary[i].index;
         card.classList.add('card');
      
         card.textContent = myLibrary[i].title;
@@ -88,14 +108,37 @@ function displayBooks(i){
         card.appendChild(pages);
 
         const read = document.createElement('div');
+        
         if(myLibrary[i].read == "true"){
+            read.classList.add("true");
             read.style.color = 'green';
         }else{
+            read.classList.add("false");
             read.style.color = 'red';
         }
         read.textContent = "complete: " + myLibrary[i].read;
-        read.style.fontWeight = '100';
+        read.style.fontWeight = '90';
         card.appendChild(read);
+        const delButton = document.createElement('button');
+        delButton.textContent = "Remove Book";
+        delButton.style.justifySelf = "center";
+        delButton.style.marginTop = "10px";
+        delButton.addEventListener("click", () => {
+            myLibrary[i].deleteSelf();
+        });
+        delButton.style.width = "80px";
+        card.appendChild(delButton);
+        const swapButton = document.createElement('button');
+        swapButton.textContent = "Swap Read Status";
+        swapButton.addEventListener("click", () => {
+            myLibrary[i].swapRead();
+        
+        });
+        swapButton.style.width = "80px";
+        swapButton.style.justifySelf = "center";
+        card.appendChild(swapButton);
+        
+
 
         main.appendChild(card);
 }
@@ -104,4 +147,8 @@ function displayBooks(i){
 for(let i = 0; i < myLibrary.length; i++){
     displayBooks(i);
 }
+
+
+
+
 
