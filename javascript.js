@@ -1,46 +1,45 @@
 console.log("hi man");
-
 const myLibrary = [];
 
-function Book(title, author, pageNum, read, index){
-    this.title = title;
-    this.author = author;
-    this.pageNum = pageNum;
-    this.read = read;
-    this.index = index;
+class Book {
+    constructor(title, author, pageNum, read, index){
+        this.title = title;
+        this.author = author;
+        this.pageNum = pageNum;
+        this.read = read;
+        this.index = index;
+    }
+
+    deleteSelf() {
+        const main = document.querySelector(".main");
+        const carDel = document.getElementById(`${this.index}`);
+        main.removeChild(carDel);
+    }
+
+    swapRead() {
+        const findMe = document.getElementById(`${this.index}`);
+       
+        if(findMe.querySelector(".true") == null){
+            const read = findMe.querySelector(".false");
+            read.classList.remove("false");
+            //its false
+            read.textContent = "complete: " + "true";
+            read.style.color = "green";
+            read.classList.add("true");
+        }else{
+            const read = findMe.querySelector(".true");
+            read.classList.remove("true");
+            //its true
+            read.textContent = "complete: " + "false";
+            read.style.color = "red";
+            read.classList.add("false");
+    
+        }
+    }
 }
 
-// Person.prototype.sayName = function() {
-//     console.log(`Hello, I'm ${this.name}!`);
-//   };
-
-Book.prototype.deleteSelf = function() {
-    const main = document.querySelector(".main");
-    const carDel = document.getElementById(`${this.index}`);
-    main.removeChild(carDel);
-};
 
 
-Book.prototype.swapRead = function() {
-    const findMe = document.getElementById(`${this.index}`);
-   
-    if(findMe.querySelector(".true") == null){
-        const read = findMe.querySelector(".false");
-        read.classList.remove("false");
-        //its false
-        read.textContent = "complete: " + "true";
-        read.style.color = "green";
-        read.classList.add("true");
-    }else{
-        const read = findMe.querySelector(".true");
-        read.classList.remove("true");
-        //its true
-        read.textContent = "complete: " + "false";
-        read.style.color = "red";
-        read.classList.add("false");
-
-    }
-};
 
 myLibrary.push(new Book("The Hobbit", "JRR", "1084", "true", 0));
 myLibrary.push(new Book("Leaves Of Grass", "WW", "694", "false", 1));
